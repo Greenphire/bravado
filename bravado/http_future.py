@@ -317,6 +317,10 @@ def unmarshal_response_inner(response, op):
             value=content_value,
         )
 
+    # FIXME improve this for upstream PR acceptance
+    if content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+        return response.raw_bytes
+
     # TODO: Non-json response contents
     return response.text
 
